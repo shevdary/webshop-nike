@@ -74,7 +74,18 @@ const ProductStore = ({
    return (
       <Container className={classes.container}>
       <AppAppBar numberOfItems={numberOfItems} openCart={openCart} setOpenCart={setOpenCart}/>
-            <div className={classes.content}>
+            <div className={classes.content}
+            style={{
+               flex: 1, // Allow content to take up remaining space vertically
+               display: "flex",
+               flexDirection: "column",
+               alignItems: "center",
+               justifyContent: "flex-start", // Adjusted to align items at the top
+               width: "100%", // Ensure content fills the width of the container
+               maxWidth: "960px", // Adjust as needed
+               padding: 2, // Adjust spacing as needed
+               
+            }}>
          <Input />
          <Categories 
          categories={categories}
