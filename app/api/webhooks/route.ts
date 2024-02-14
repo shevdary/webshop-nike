@@ -1,8 +1,8 @@
 import type { Stripe } from "stripe";
 
 import { NextResponse } from "next/server";
+import { stripe } from "@/app/lib/stripe";
 
-import { stripe } from "@/lib/stripe";
 
 export async function POST(req: Request) {
   let event: Stripe.Event;
