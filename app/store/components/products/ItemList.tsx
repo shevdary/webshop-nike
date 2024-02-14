@@ -57,14 +57,6 @@ const ItemList = ({
          {!pending && items.length > 0 ? (
             <Grid
                className={classes.container}
-               style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  marginLeft: "auto",
-                  marginRight: "auto",
-                  marginTop: 0.5,
-                  marginBottom: 10,
-               }}
                container
                item
                spacing={4}

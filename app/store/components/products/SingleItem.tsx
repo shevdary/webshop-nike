@@ -16,46 +16,39 @@ import { addToCart } from "../cart/functions";
 
 const useStyles = makeStyles((theme) => ({
    root: {
-      minWidth: '100%',
-     maxWidth: '100%', // Ensure the card takes up the full width
+      minWidth: '50%',
+     maxWidth: '50%', // Ensure the card takes up the full width
      [theme.breakpoints.up("sm")]: {
-       maxWidth: 500, // Set max width for larger screens
+       maxWidth: 150, // Set max width for larger screens
      },
    },
    media: {
      height: 140, // Default height for small screens
      [theme.breakpoints.up("sm")]: {
-       height: 200, // Adjusted height for larger screens
+       height: 100, // Adjusted height for larger screens
      },
    },
  }));
  
-
-export const SingleProduct = ({
+ export const SingleProduct = ({
    item,
    setProduct, 
    setCart,
    cart,
 }: { 
    cart: Cart;
-      setCart: (c: Cart) => void;
-      item: MyProduct;
-      setProduct: (a: MyProduct| null) => void 
-   }) => {
+   setCart: (c: Cart) => void;
+   item: MyProduct;
+   setProduct: (a: MyProduct| null) => void 
+}) => {
    const classes = useStyles();
    
    const { price, img, name } = item;
 
    return (
-      <Grid item xs={10} sm={6} lg={3}>
-         <Card className={classes.root}
-         style={{
-            minWidth: '100%',
-           maxWidth: '100%', // Ensure the card takes up the full width
-           
-         }}
-         >
-         <CardActionArea onClick={() => setProduct(item)}>
+      <Grid item xs={12} sm={6} lg={3} container justifyContent="center"> {/* Center items on mobile screens */}
+         <Card className={classes.root}>
+            <CardActionArea onClick={() => setProduct(item)}>
                <CardMedia
                   className={classes.media}
                   style={{
@@ -79,11 +72,11 @@ export const SingleProduct = ({
                   </Typography>
                </CardContent>
             </CardActionArea>
-            <Button variant="contained" 
-            onClick={() => addToCart(setCart, cart, item)}>
-                  <ShoppingCartIcon />+
-                  </Button>
+            <Button variant="contained" onClick={() => addToCart(setCart, cart, item)}>
+               <ShoppingCartIcon />+
+            </Button>
          </Card>
       </Grid>
    );
 };
+
