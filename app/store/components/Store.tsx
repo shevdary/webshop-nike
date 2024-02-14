@@ -95,9 +95,8 @@ const ProductStore = ({
                maxWidth: "960px", // Adjust as needed
                padding: 2, // Adjust spacing as needed
                
-            }}>
-         <Input />
-         <Categories 
+            }}>         
+            <Categories 
          categories={categories}
          category={category} 
          setCategory={setCategory}

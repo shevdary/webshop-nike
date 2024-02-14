@@ -80,9 +80,7 @@ export const SingleProduct = ({
                </CardContent>
             </CardActionArea>
             <Button variant="contained" 
-            // style={{color: "#000"}}
-            onClick={() => addToCart(setCart, cart, item)}
-            >
+            onClick={() => addToCart(setCart, cart, item)}>
                   <ShoppingCartIcon />+
                   </Button>
          </Card>
