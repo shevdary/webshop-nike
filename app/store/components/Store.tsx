@@ -72,7 +72,17 @@ const ProductStore = ({
    const [product, setProduct] = useState<MyProduct | null>(null)
 
    return (
-      <Container className={classes.container}>
+      <Container className={classes.container}
+      style={{
+         display: "flex",
+         flexDirection: "column",
+         alignItems: "center",
+         justifyContent: "center",
+         minHeight: "100vh", // Ensure the container takes full viewport height
+         minWidth: '100vh', // Default minWidth for large screens
+         
+       }}
+      >
       <AppAppBar numberOfItems={numberOfItems} openCart={openCart} setOpenCart={setOpenCart}/>
             <div className={classes.content}
             style={{
