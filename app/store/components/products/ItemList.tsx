@@ -99,7 +99,6 @@ const ItemList = ({
 export default ItemList;
 
 const returnCategory = (category: string) => {
-  console.log(category)
    let result: MyProduct[];
   switch (true) {
     case category === 'Sneakers':
