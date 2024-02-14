@@ -32,7 +32,12 @@ const Categories = ({
 }) => {
    const classes = useStyles();
    return (
-      <Grid container className={classes.container}>
+      <Grid container className={classes.container}
+      style={{
+         justifyContent: "center",
+         marginTop: 2,
+      }}
+      >
          {categories.map((cat, idx) => (
             <Grid item key={idx} className={classes.padding}>
                <Button

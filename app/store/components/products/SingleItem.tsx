@@ -16,7 +16,7 @@ import { addToCart } from "../cart/functions";
 
 const useStyles = makeStyles((theme) => ({
    root: {
-      minWidtg: '100%',
+      minWidth: '100%',
      maxWidth: '100%', // Ensure the card takes up the full width
      [theme.breakpoints.up("sm")]: {
        maxWidth: 500, // Set max width for larger screens
@@ -48,10 +48,19 @@ export const SingleProduct = ({
 
    return (
       <Grid item xs={10} sm={6} lg={3}>
-         <Card className={classes.root}>
+         <Card className={classes.root}
+         style={{
+            minWidth: '100%',
+           maxWidth: '100%', // Ensure the card takes up the full width
+           
+         }}
+         >
          <CardActionArea onClick={() => setProduct(item)}>
                <CardMedia
                   className={classes.media}
+                  style={{
+                     height: 140
+                  }}
                   src={img[0]}
                   title={name}
                   component="img"
