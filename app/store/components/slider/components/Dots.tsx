@@ -1,4 +1,5 @@
 import React from "react";
+import {styled} from "@mui/system";
 
 
 export interface DotProps {
@@ -19,6 +20,10 @@ const Dot: React.FC<DotProps> = ({ active }) => {
   );
 };
 
+const ImgContainer = styled("div")({
+  alignSelf: "center"
+});
+
 interface DotsProps {
   mates: string[];
   index: number
@@ -26,11 +31,11 @@ interface DotsProps {
 
 const Dots: React.FC<DotsProps> = ({ mates, index }) => {
   return (
-    <div style={{ marginTop: "1rem" }}>
+    <ImgContainer>
       {mates.map((item, i) => (
         <Dot key={item} active={index === i} />
       ))}
-    </div>
+    </ImgContainer>
   );
 };
 

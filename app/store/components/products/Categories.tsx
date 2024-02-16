@@ -1,61 +1,51 @@
-"use client"
 import React from "react";
-import { Button, Grid, makeStyles } from "@material-ui/core";
+import { Button, Grid, styled } from "@mui/material";
 import { MyProduct } from "@/app/components/constants/types";
 
-const useStyles = makeStyles((theme) => ({
-   container: {
-      justifyContent: "center",
-      marginTop: theme.spacing(2),
-      [theme.breakpoints.up("sm")]: {
-         marginTop: theme.spacing(0.5),
-      },
-   },
-   padding: {
-      padding: theme.spacing(1),
-   },
-   letterSpace: {
-      letterSpacing: 3,
-   },
+const StyledGrid = styled(Grid)(({ theme }) => ({
+  justifyContent: "center",
+  marginTop: theme.spacing(2),
+  [theme.breakpoints.up("sm")]: {
+    marginTop: theme.spacing(0.5),
+  },
+}));
+
+const StyledButton = styled(Button)(({ theme }) => ({
+  padding: theme.spacing(1),
+  letterSpacing: 3,
 }));
 
 const Categories = ({
-   category, 
-   setCategory, 
-   categories,
-   setProduct
+  category,
+  setCategory,
+  categories,
+  setProduct,
 }: {
-   setProduct: (a: MyProduct | null) => void;
-   categories: string[];
-   category: string; 
-   setCategory: (a: string) => void
+  setProduct: (a: MyProduct | null) => void;
+  categories: string[];
+  category: string;
+  setCategory: (a: string) => void;
 }) => {
-   const classes = useStyles();
-   return (
-      <Grid container className={classes.container}
-      style={{
-         justifyContent: "center",
-         marginTop: 2,
-      }}
-      >
-         {categories.map((cat, idx) => (
-            <Grid item key={idx} className={classes.padding}>
-               <Button
-                  size="small"
-                  color="primary"
-                  variant={cat === category ? "outlined" : "contained"}
-                  onClick={() => {
-                     setProduct(null);
-                     setCategory(cat)
-                  }}
-                  className={classes.letterSpace}
-               >
-                  {cat}
-               </Button>
-            </Grid>
-         ))}
-      </Grid>
-   );
+  return (
+    <StyledGrid container item spacing={2}>
+      {categories.map((cat, idx) => (
+        <Grid item key={idx}>
+          <StyledButton
+            size="small"
+            color="primary"
+            variant={cat === category ? "outlined" : "contained"}
+            classes={{ contained: `btn btn-md bg-[#3f51b5] h-full` }}
+            onClick={() => {
+              setProduct(null);
+              setCategory(cat);
+            }}
+          >
+            {cat}
+          </StyledButton>
+        </Grid>
+      ))}
+    </StyledGrid>
+  );
 };
 
 export default Categories;

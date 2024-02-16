@@ -1,25 +1,20 @@
 import React from "react";
-import { Card, CardMedia, makeStyles } from "@material-ui/core";
+import { Card, CardMedia } from "@mui/material";
+import { styled } from "@mui/system";
 
-const useStyles = makeStyles((theme: any) => ({
-    image: {
-      width: '100%', // large screen
-      height: 'auto',
-    },
-    
- }));
+const CarouselImage = styled(CardMedia)({
+  width: '100%', // large screen
+  height: 'auto',
+});
 
-const CarouselSlide = ({img}: {img: string}) => {
-  const classes = useStyles()
+const CarouselSlide = ({ img }: { img: string }) => {
   return (
     <Card style={{
       minWidth: 200,
       position: 'relative'
-      }}>
-    <CardMedia component="img" src={img} 
-    className={classes.image}
-     />
-  </Card>
+    }}>
+      <CarouselImage src={img} />
+    </Card>
   );
 };
 
