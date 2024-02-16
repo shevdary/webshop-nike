@@ -1,53 +1,51 @@
 import React from "react";
-import { Fab, makeStyles, useScrollTrigger, Zoom } from "@material-ui/core";
-import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
+import { Fab, styled, useScrollTrigger, Zoom } from "@mui/material";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import Link from "next/link";
 
-const useStyles = makeStyles((theme) => ({
-   root: {
-      position: "fixed",
-      bottom: theme.spacing(4),
-      right: theme.spacing(4),
-   },
+const ScrollTopRoot = styled("div")(({ theme }) => ({
+  position: "fixed",
+  bottom: theme.spacing(4),
+  right: theme.spacing(4),
 }));
 
-const ScrollTop = (props: any) => {
-   const classes = useStyles();
-   const { children, window } = props;
+const ScrollTop = (props) => {
+  const { children, window } = props;
+  const trigger = useScrollTrigger({
+    target: window ? window() : undefined,
+    disableHysteresis: true,
+    threshold: 100,
+  });
 
-   const trigger = useScrollTrigger({
-      target: window ? window() : undefined,
-      disableHysteresis: true,
-      threshold: 100,
-   });
-   const handleClick = (event: any) => {
-      const anchor = (event.target.ownerDocument || document).querySelector(
-         "#back-to-top-anchor"
-      );
+  const handleClick = (event) => {
+    const anchor = (event.target.ownerDocument || document).querySelector(
+      "body",
+    );
 
-      if (anchor) {
-         anchor.scrollIntoView({ behavior: "smooth", block: "center" });
-      }
-   };
-   return (
-      <Zoom in={trigger}>
-         <div
-            onClick={handleClick}
-            role="presentation"
-            className={classes.root}
-         >
-            {children}
-         </div>
-      </Zoom>
-   );
+    if (anchor) {
+      anchor.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
+  return (
+    <Zoom in={trigger}>
+      <Link href="#">
+        <ScrollTopRoot onClick={handleClick} role="presentation">
+          {children}
+        </ScrollTopRoot>
+      </Link>
+    </Zoom>
+  );
 };
 
-const ScrollBtn = (props: any) => {
-   return (
-      <ScrollTop {...props}>
-         <Fab color="primary" size="small" aria-label="scroll back to top">
-            <KeyboardArrowUpIcon />
-         </Fab>
-      </ScrollTop>
-   );
+const ScrollBtn = (props) => {
+  return (
+    <ScrollTop {...props}>
+      <Fab color="primary" size="small" aria-label="scroll back to top">
+        <KeyboardArrowUpIcon />
+      </Fab>
+    </ScrollTop>
+  );
 };
+
 export default ScrollBtn;

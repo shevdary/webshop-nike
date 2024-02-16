@@ -8,12 +8,12 @@ import { totalPrice } from "@/app/store/components/cart/functions";
 import getStripe from "@/app/utils/get-stripejs";
 import { formatAmountForDisplay } from "@/app/utils/stripe-helpers";
 import { Cart } from "../../constants/types";
-import { AMOUNT_STEP, CURRENCY, MAX_AMOUNT } from "@/app/config";
+import { CURRENCY } from "@/app/config";
 import {
   EmbeddedCheckout,
   EmbeddedCheckoutProvider,
 } from "@stripe/react-stripe-js";
-import { Box, Button, Grid, Typography } from "@material-ui/core";
+import { Box, Typography } from "@mui/material";
 
 interface CheckoutFormProps {
   uiMode: Stripe.Checkout.SessionCreateParams.UiMode;
@@ -22,7 +22,7 @@ interface CheckoutFormProps {
 
 export default function CheckoutForm(props: CheckoutFormProps): JSX.Element {
   const [loading] = useState<boolean>(false);
-  
+
   const [clientSecret, setClientSecret] = useState<string | null>(null);
 
   const amount = totalPrice(props.order)
