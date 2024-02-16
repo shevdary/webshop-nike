@@ -7,9 +7,9 @@ export const metadata: Metadata = {
 
 import React from "react";
 import { Container, Paper, Typography,Stack } from "@mui/material";
-import AppAppBar from "@/app/components/appBar";
 import { aboutText, brand } from "@/app/components/constants/Texts";
 import { styled } from '@mui/system';
+import AppBarContainer from "@/app/components/appBar";
 
 const ContainerStyled = styled(Container)({
   display: "flex",
@@ -52,7 +52,7 @@ const AboutSection = ({
 }) => {
   return (
     <ContainerStyled>
-      <AppAppBar
+      <AppBarContainer
         numberOfItems={numberOfItems}
         openCart={openCart}
         setOpenCart={setOpenCart}

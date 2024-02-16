@@ -38,14 +38,15 @@ const StyledTypography = styled(Typography)(({ theme }) => ({
 }));
 
 const AppBarContainer = ({
-   numberOfItems,
+  numberOfItems,
+  openCart,
+  setOpenCart,
  }: {
   numberOfItems?: number;
-  openCart?: boolean;
-  setOpenCart?: (b: boolean) => void;
+  openCart: boolean;
+  setOpenCart: (b: boolean) => void;
 }) => {
   const [isMenuOpen, setMenuOpen] = useState(false);
-  const [openCart, setOpenCart] = useState(false);
 
   return (
     <>
