@@ -40,7 +40,7 @@ export const SingleProduct = ({
   const { price, img, name } = item;
 
   return (
-    <Grid item className="justify-center md:justify-normal">
+    <Grid item className="justify-center md:justify-normal ">
       <StyledCard>
         <CardActionArea onClick={() => setProduct(item)}>
           <StyledCardMedia

@@ -5,7 +5,7 @@ export const metadata: Metadata = {
 };
 
 import React, { useState } from "react";
-import { Container, styled } from "@mui/material";
+import {Collapse, Container, styled} from "@mui/material";
 import Categories from "./products/Categories";
 import ItemList from "./products/ItemList";
 import ScrollBtn from "./products/ScrlBtn";
@@ -28,7 +28,7 @@ const StyledContainer = styled(Container)({
     minWidth: '50vh', // Adjust minWidth for phone screens
   },
   '@media (max-width: 600px)': {
-    minWidth: '50vh', // Adjust minWidth for phone screens
+    minWidth: '0', // Adjust minWidth for phone screens
   },
 });
 
@@ -45,7 +45,7 @@ const StyledContent = styled('div')({
     minWidth: '150vh', // Adjust minWidth for phone screens
   },
   '@media (max-width: 600px)': {
-    minWidth: '50vh', // Adjust minWidth for phone screens
+    minWidth: '0', // Adjust minWidth for phone screens
   },
 });
 
@@ -67,7 +67,6 @@ const ProductStore = ({
 
   return (
     <StyledContainer>
-      <AppAppBar numberOfItems={numberOfItems} openCart={openCart} setOpenCart={setOpenCart}/>
       <StyledContent>
         <Categories
           categories={categories}
@@ -76,7 +75,9 @@ const ProductStore = ({
           setProduct={setProduct}
         />
         {product === null && <ItemList cart={cart} setCart={setCart} category={category} setProduct={setProduct} />}
-        {product && <SingleProductPage cart={cart} setCart={setCart} item={product} setProduct={setProduct} />}
+        {product &&
+            <SingleProductPage cart={cart} setCart={setCart} item={product} setProduct={setProduct} />
+          }
         <ScrollBtn />
       </StyledContent>
     </StyledContainer>

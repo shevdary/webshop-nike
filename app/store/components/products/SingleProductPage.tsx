@@ -6,6 +6,7 @@ import { addToCart } from "../cart/functions";
 
 const ContainerGrid = styled(Grid)(({ theme }) => ({
   padding: theme.spacing(4),
+  position: "relative",
   justifyContent: "space-around",
   height: "auto",
   alignItems: "center",
@@ -17,15 +18,12 @@ const ContainerGrid = styled(Grid)(({ theme }) => ({
   },
 }));
 
-const ImgContainer = styled("div")(({ theme }) => ({
-  width: "100%",
-  height: "auto",
-  boxShadow: theme.shadows[3],
-}));
-
-const BackButton = styled(Button)({
+const BackButton = styled(Button)(({theme})=>({
+  position: "absolute",
+  top: theme.spacing(3),
+  left: theme.spacing(3),
   borderRadius: 28,
-});
+}));
 
 const StyledTypography = styled(Typography)(({ theme }) => ({
   marginTop: theme.spacing(0.5),
@@ -58,18 +56,12 @@ const SingleProductPage = ({
   };
 
   return (
-    <ContainerGrid container>
-      <Grid item xs={3} sm={3}></Grid>
-      <Grid item xs={6} sm={6}>
-        <BackButton variant="outlined" onClick={() => setProduct(null)}>
-          {`< Back`}
-        </BackButton>
-      </Grid>
-      <Grid item xs={3} sm={3}></Grid>
+    <ContainerGrid container className="mb-2">
+      <BackButton variant="outlined" onClick={() => setProduct(null)}>
+        {`< Back`}
+      </BackButton>
       <Grid item xs={12} sm={4}>
-        <ImgContainer>
           <ImageSlider item={item} />
-        </ImgContainer>
       </Grid>
       <Grid item xs={12} sm={6}>
         <StyledTypography variant="h4">{name}</StyledTypography>
@@ -83,9 +75,11 @@ const SingleProductPage = ({
         <StyledTypography variant="subtitle2">€{price}</StyledTypography>
         <StyledButton
           fullWidth
+          size="large"
           variant="contained"
           color="primary"
           onClick={handleClick}
+          classes={{ contained: `btn btn-md bg-[#3f51b5] h-full` }}
         >
           Add to Cart
         </StyledButton>

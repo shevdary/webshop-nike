@@ -1,3 +1,4 @@
+"use client"
 import React, { useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
@@ -9,13 +10,13 @@ import {
   IconButton,
   Badge,
   Button,
-  Fade,
   styled, Collapse,
 } from "@mui/material";
 import Link from "next/link";
 import CloseIcon from "@mui/icons-material/Close";
 import { ShopName } from "../constants/Texts";
 import Menu from "./Menu";
+import {emptyCart} from "@/app/components/constants/Defaults";
 
 const StyledIconButton = styled(IconButton)(({ theme }) => ({
   marginRight: theme.spacing(0.5),
@@ -28,26 +29,28 @@ const StyledIconButton = styled(IconButton)(({ theme }) => ({
   },
 }));
 
-const StyledTypography = styled(Typography)({
+const StyledTypography = styled(Typography)(({ theme }) => ({
   color: "#fff",
   textDecoration: "none",
   cursor: "pointer",
-});
+  [theme.breakpoints.down("sm")]: {
+    fontSize: '1.25rem',
+  },
+}));
 
-const AppAppBar = ({
-                     openCart,
-                     setOpenCart,
-                     numberOfItems,
-                   }: {
-  numberOfItems: number;
-  openCart: boolean;
+const AppBarContainer = ({
+   numberOfItems,
+ }: {
+  numberOfItems?: number;
+  openCart?: boolean;
   setOpenCart?: (b: boolean) => void;
 }) => {
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const [openCart, setOpenCart] = useState(false);
 
   return (
     <>
-      <AppBar>
+      <AppBar position="sticky">
         <Toolbar id="back-to-top-anchor">
           <Grid container alignItems="center">
             <Grid item>
@@ -96,4 +99,4 @@ const AppAppBar = ({
   );
 };
 
-export default AppAppBar;
+export default AppBarContainer;

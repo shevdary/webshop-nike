@@ -13,9 +13,7 @@ import { styled } from "@mui/material/styles";
 const StyledGridContainer = styled(Grid)(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
-  marginLeft: "auto",
-  marginRight: "auto",
-  marginTop: theme.spacing(0.5),
+  marginTop: theme.spacing(20),
   marginBottom: theme.spacing(10),
 }));
 
@@ -29,8 +27,11 @@ const StyledButton = styled(Button)(({ theme }) => ({
   marginTop: theme.spacing(2),
 }));
 
-const Root = styled("div")(() => ({
-  width: '100%'
+const Root = styled("div")(({theme}) => ({
+  width: "100%",
+  display: "flex",
+  justifyContent: "center",
+  marginTop: theme.spacing(5),
 }));
 
 const ItemList = ({
@@ -56,7 +57,7 @@ const ItemList = ({
   return (
     <Root>
       {!pending && items.length > 0 ? (
-        <StyledGridContainer container item spacing={4} xs={10} sm={8} lg={10} className="stepashka">
+        <StyledGridContainer container spacing={{xs: 1, md: 4}} xs={10} sm={4} lg={10}>
           {mapThroughItems(cart, items, setCart, setProduct)}
         </StyledGridContainer>
       ) : !pending && items.length === 0 ? (

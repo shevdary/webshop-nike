@@ -11,11 +11,11 @@ const Arrow: React.FC<ArrowProps> = ({ direction, handleClick }) => {
   return (
     <Fab
       style={{
-        padding: "2em",
         backgroundColor: "unset",
         boxShadow: "unset",
         border: "1px solid",
       }}
+      size="small"
       onClick={handleClick}
     >
       {direction === "right" ? <ArrowRight/> : <ArrowLeft />}

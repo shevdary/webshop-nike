@@ -9,9 +9,26 @@ import { MyProduct } from "@/app/components/constants/types";
 
 const ImageGrid = styled(Grid)({
   justifyContent: "flex-start",
-  minHeight: "30vh",
-  minWidth: "60vh"
+  width: "100%",
+  minWidth: "200px",
+  overflow: "hidden"
 });
+
+const GridItem = styled(Grid)({
+  position: "relative",
+});
+
+const ImgContainer = styled("div")(({ theme }) => ({
+  width: "100%",
+  height: "auto",
+  boxShadow: theme.shadows[3],
+}));
+
+const StackContainer = styled(Stack)(({ theme }) => ({
+  width: "100%",
+  justifyContent: "center",
+  marginTop: theme.spacing(2)
+}));
 
 const ImageSlider = ({ item }: { item: MyProduct }) => {
   const [slideIn, setSlideIn] = useState(true);
@@ -35,27 +52,21 @@ const ImageSlider = ({ item }: { item: MyProduct }) => {
   };
 
   return (
-    <ImageGrid container xs={12}>
-      <Grid item xs={4} style={{ position: "relative" }}>
+    <ImageGrid container>
+      <GridItem item width="100%">
         <Slide in={slideIn} direction={slideDirection}>
-          <div style={{ width: "100%" }}>
+          <ImgContainer style={{ width: "100%" }}>
             <CarouselSlide img={content} />
-          </div>
+          </ImgContainer>
         </Slide>
-        <Stack
+        <StackContainer
           direction="row"
-          justifyContent="space-between"
-          position="absolute"
-          top="75%"
-          width="100%"
         >
           <Arrow direction="left" handleClick={() => onArrowClick("left")} />
+          <Dots mates={item.img} index={index}/>
           <Arrow direction="right" handleClick={() => onArrowClick("right")} />
-        </Stack>
-        <Stack direction="row" justifyContent="center">
-          <Dots mates={item.img} index={index} />
-        </Stack>
-      </Grid>
+        </StackContainer>
+      </GridItem>
     </ImageGrid>
   );
 };
