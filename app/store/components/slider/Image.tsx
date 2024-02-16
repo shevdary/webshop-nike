@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Slide from "@mui/material/Slide";
-import { Grid, Stack } from "@mui/material";
+import {Box, Grid, Stack} from "@mui/material";
 import Dots from "./components/Dots";
 import Arrow from "./components/Arrow";
 import CarouselSlide from "./components/CarouselSlide";
@@ -18,10 +18,9 @@ const GridItem = styled(Grid)({
   position: "relative",
 });
 
-const ImgContainer = styled("div")(({ theme }) => ({
+const ImgContainer = styled(Box)(() => ({
   width: "100%",
   height: "auto",
-  boxShadow: theme.shadows[3],
 }));
 
 const StackContainer = styled(Stack)(({ theme }) => ({
@@ -55,7 +54,7 @@ const ImageSlider = ({ item }: { item: MyProduct }) => {
     <ImageGrid container>
       <GridItem item width="100%">
         <Slide in={slideIn} direction={slideDirection}>
-          <ImgContainer style={{ width: "100%" }}>
+          <ImgContainer className="shadow">
             <CarouselSlide img={content} />
           </ImgContainer>
         </Slide>

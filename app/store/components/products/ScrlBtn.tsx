@@ -1,4 +1,4 @@
-import React from "react";
+import React, {FC} from "react";
 import { Fab, styled, useScrollTrigger, Zoom } from "@mui/material";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import Link from "next/link";
@@ -9,16 +9,17 @@ const ScrollTopRoot = styled("div")(({ theme }) => ({
   right: theme.spacing(4),
 }));
 
-const ScrollTop = (props) => {
+const ScrollTop: FC<{children?: React.ReactNode, window?: Window}> = (props) => {
   const { children, window } = props;
   const trigger = useScrollTrigger({
-    target: window ? window() : undefined,
+    target: window ? window : undefined,
     disableHysteresis: true,
     threshold: 100,
   });
 
-  const handleClick = (event) => {
-    const anchor = (event.target.ownerDocument || document).querySelector(
+  const handleClick = (event: React.MouseEvent<HTMLInputElement>) => {
+    const target = event.target as HTMLElement;
+    const anchor = (target.ownerDocument || document).querySelector(
       "body",
     );
 
@@ -38,7 +39,7 @@ const ScrollTop = (props) => {
   );
 };
 
-const ScrollBtn = (props) => {
+const ScrollBtn:FC<{children?: React.ReactNode, window?: Window}> = (props) => {
   return (
     <ScrollTop {...props}>
       <Fab color="primary" size="small" aria-label="scroll back to top">

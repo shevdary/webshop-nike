@@ -13,7 +13,7 @@ const CarouselSlide = ({ img }: { img: string }) => {
       minWidth: 200,
       position: 'relative'
     }}>
-      <CarouselImage component="img" src={img} />
+      <CarouselImage src={img} />
     </Card>
   );
 };

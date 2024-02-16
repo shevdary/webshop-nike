@@ -5,13 +5,12 @@ export const metadata: Metadata = {
 };
 
 import React, { useState } from "react";
-import {Collapse, Container, styled} from "@mui/material";
+import { Container, styled } from "@mui/material";
 import Categories from "./products/Categories";
 import ItemList from "./products/ItemList";
 import ScrollBtn from "./products/ScrlBtn";
 import SingleProductPage from "./products/SingleProductPage";
 import { Cart, MyProduct } from "@/app/components/constants/types";
-import AppAppBar from "@/app/components/appBar";
 import { categories } from "@/app/components/constants/Products";
 
 const StyledContainer = styled(Container)({
@@ -50,12 +49,9 @@ const StyledContent = styled('div')({
 });
 
 const ProductStore = ({
-                        openCart,
-                        setOpenCart,
-                        cart,
-                        setCart,
-                        numberOfItems
-                      }: {
+  cart,
+  setCart,
+}: {
   openCart: boolean;
   numberOfItems: number;
   setOpenCart: (b: boolean) => void;

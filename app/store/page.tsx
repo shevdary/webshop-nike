@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import { Badge } from "@mui/material";
-import AppAppBar from "../components/appBar";
 import ProductStore from "./components/Store";
 import { emptyCart } from "../components/constants/Defaults";
 import { CartPage } from "./components/cart/Page";

@@ -16,7 +16,6 @@ import Link from "next/link";
 import CloseIcon from "@mui/icons-material/Close";
 import { ShopName } from "../constants/Texts";
 import Menu from "./Menu";
-import {emptyCart} from "@/app/components/constants/Defaults";
 
 const StyledIconButton = styled(IconButton)(({ theme }) => ({
   marginRight: theme.spacing(0.5),
