@@ -1,11 +1,5 @@
 import React from "react";
 import { Card, CardMedia } from "@mui/material";
-import { styled } from "@mui/system";
-
-const CarouselImage = styled(CardMedia)({
-  width: '100%', // large screen
-  height: 'auto',
-});
 
 const CarouselSlide = ({ img }: { img: string }) => {
   return (
@@ -13,7 +7,7 @@ const CarouselSlide = ({ img }: { img: string }) => {
       minWidth: 200,
       position: 'relative'
     }}>
-      <CarouselImage src={img} />
+      <CardMedia className="w-full h-auto" component="img" src={img} />
     </Card>
   );
 };
