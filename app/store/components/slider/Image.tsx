@@ -54,7 +54,7 @@ const ImageSlider = ({ item }: { item: MyProduct }) => {
     <ImageGrid container>
       <GridItem item width="100%">
         <Slide in={slideIn} direction={slideDirection}>
-          <ImgContainer className="shadow">
+          <ImgContainer style={{ width: "100%" }}>
             <CarouselSlide img={content} />
           </ImgContainer>
         </Slide>

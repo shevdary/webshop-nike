@@ -13,8 +13,11 @@ const ContainerGrid = styled(Grid)(({ theme }) => ({
   "&:nth-child(2)": {
     backgroundColor: "white",
   },
-  [`@media (min-width: ${theme.breakpoints.values.md}px)`]: {
-    padding: theme.spacing(10),
+  [theme.breakpoints.down("md")]: {
+    paddingTop:theme.spacing(5),
+    paddingBottom: theme.spacing(5),
+    width: 'auto',
+    flexDirection: 'column',
   },
 }));
 
@@ -23,6 +26,12 @@ const BackButton = styled(Button)(({theme})=>({
   top: theme.spacing(3),
   left: theme.spacing(3),
   borderRadius: 28,
+
+  [theme.breakpoints.down("md")]: {
+    top: theme.spacing(1),
+    left: theme.spacing(1),
+    padding: "0.25rem"
+  },
 }));
 
 const StyledTypography = styled(Typography)(({ theme }) => ({
@@ -56,14 +65,14 @@ const SingleProductPage = ({
   };
 
   return (
-    <ContainerGrid container className="mb-2">
+    <ContainerGrid container className="mb-2 mt-5 lg:mt-0">
       <BackButton variant="outlined" onClick={() => setProduct(null)}>
         {`< Back`}
       </BackButton>
-      <Grid item xs={12} sm={4}>
+      <Grid item xs={12} sm={12} md={4}>
           <ImageSlider item={item} />
       </Grid>
-      <Grid item xs={12} sm={6}>
+      <Grid item xs={12} sm={12} md={4}>
         <StyledTypography variant="h4">{name}</StyledTypography>
         <StyledChip label={category} variant="outlined" />
         <Typography

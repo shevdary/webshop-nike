@@ -30,9 +30,10 @@ const StyledGrid = styled(Grid)({
   minHeight: "auto", // Ensure the container takes full viewport height
   marginTop: 20,
   marginBottom: 10,
+  width: '100%',
   minWidth: '100vh', // Default minWidth for large screens
   '@media (max-width: 1280px)': {
-    minWidth: '100vh', // Adjust minWidth for phone screens
+    minWidth: '100%', // Adjust minWidth for phone screens
   },
   '@media (max-width: 960px)': {
     minWidth: '100vh', // Adjust minWidth for phone screens
@@ -117,19 +118,17 @@ export const CartPage = ({
                 <TableRow key={i}>
                   <TableCell style={{ width: "5%" }}>{p.product.name}</TableCell>
                   <TableCell style={{ width: "5%" }}>€{p.product.price.toFixed(2)}</TableCell>
-                  <TableCell style={{ width: "20%" }}>
-                    <Grid container alignItems="center">
-                      <Grid item>{p.quantity}</Grid>
-                      <Grid item>
+                  <TableCell style={{ width: "30%" }}>
+                    <Grid container alignItems="center" direction="row">
                         <CiCirclePlus
-                          style={{ fontSize: "2em", cursor: 'pointer' }}
+                          style={{ fontSize: "1.5em", cursor: 'pointer' }}
                           onClick={() => handleIncreaseQuantity(i)}
                         />
+                      <Grid item className="mx-1">{p.quantity}</Grid>
                         <CiCircleMinus
-                          style={{ fontSize: "2em", cursor: 'pointer' }}
+                          style={{ fontSize: "1.5em", cursor: 'pointer' }}
                           onClick={() => handleDecreaseQuantity(i)}
-                        />
-                      </Grid>
+                          />
                     </Grid>
                   </TableCell>
                   <TableCell style={{ width: "50%" }}>€{(p.product.price * p.quantity).toFixed(2)}</TableCell>
