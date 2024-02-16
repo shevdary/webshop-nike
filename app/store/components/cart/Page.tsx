@@ -33,10 +33,10 @@ const StyledGrid = styled(Grid)({
   width: '100%',
   minWidth: '100vh', // Default minWidth for large screens
   '@media (max-width: 1280px)': {
-    minWidth: '100%', // Adjust minWidth for phone screens
+    minWidth: '0%', // Adjust minWidth for phone screens
   },
   '@media (max-width: 960px)': {
-    minWidth: '100vh', // Adjust minWidth for phone screens
+    minWidth: '0%', // Adjust minWidth for phone screens
   },
   '@media (max-width: 600px)': {
     minWidth: '50vh', // Adjust minWidth for phone screens
